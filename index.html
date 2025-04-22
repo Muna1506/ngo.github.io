@@ -128,17 +128,42 @@
         transform: translateY(0);
       }
 
+      /* Hero Section */
       .hero {
+        position: relative;
         height: 100vh;
-        background: url("https://media.istockphoto.com/id/1211101154/photo/a-refugee-homeless-child-standing-in-a-dark-room-with-sad-expression.jpg?s=612x612&w=0&k=20&c=6IHFN8mT39OAFVz_Phyuf8Ib7ITsWyK_rhqGUTAOWGw=")
-          no-repeat center/cover;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+        overflow: hidden;
         color: white;
+        text-align: center;
       }
 
+      /* Video container */
+      .hero-video-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      /* Video styling */
+      .hero-video {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Content on top of video */
+      .hero div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+      }
+
+      /* Text styles */
       .hero h1 {
         font-size: 48px;
         margin-bottom: 20px;
@@ -149,7 +174,6 @@
         font-size: 20px;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
-
       .btn {
         padding: 12px 30px;
         background: #3498db;
@@ -333,99 +357,107 @@
         }
       }
 
-
-
       h1 {
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 2.5em;
-    }
-
-    .team-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-
-    .team-member {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      padding: 25px;
-      text-align: center;
-      transition: all 0.4s ease;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .team-member:hover {
-      transform: translateY(-10px);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .team-member img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 20px;
-      border: 3px solid #00d4ff;
-    }
-
-    .team-member h2 {
-      font-size: 1.4em;
-      margin-bottom: 5px;
-      color: #00d4ff;
-    }
-
-    .team-member h4 {
-      font-weight: 400;
-      font-size: 1em;
-      margin-bottom: 10px;
-      color: #ccc;
-    }
-
-    .team-member p {
-      font-size: 0.9em;
-      line-height: 1.5;
-      color: #aaa;
-    }
-
-    /* Hover effect - glow animation */
-    .team-member::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, transparent 70%);
-      opacity: 0;
-      transition: 0.5s;
-      pointer-events: none;
-    }
-
-    .team-member:hover::before {
-      opacity: 1;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    @media screen and (max-width: 600px) {
-      body {
-        padding: 20px;
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 2.5em;
       }
 
-      h1 {
-        font-size: 2em;
+      .team-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
       }
-    }
+
+      .team-member {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 25px;
+        text-align: center;
+        transition: all 0.4s ease;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .team-member:hover {
+        transform: translateY(-10px);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .team-member img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        border: 3px solid #00d4ff;
+      }
+
+      .team-member h2 {
+        font-size: 1.4em;
+        margin-bottom: 5px;
+        color: #00d4ff;
+      }
+
+      .team-member h4 {
+        font-weight: 400;
+        font-size: 1em;
+        margin-bottom: 10px;
+        color: #ccc;
+      }
+
+      .team-member p {
+        font-size: 0.9em;
+        line-height: 1.5;
+        color: #aaa;
+      }
+
+      /* Hover effect - glow animation */
+      .team-member::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 212, 255, 0.2) 0%,
+          transparent 70%
+        );
+        opacity: 0;
+        transition: 0.5s;
+        pointer-events: none;
+      }
+
+      .team-member:hover::before {
+        opacity: 1;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        body {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 2em;
+        }
+      }
     </style>
   </head>
   <body>
@@ -457,6 +489,21 @@
 
     <!-- Sections -->
     <section id="home" class="section hero">
+      <div class="hero-video-container">
+        <!-- Video -->
+        <iframe
+          width="1296"
+          height="729"
+          src="https://www.youtube.com/embed/Wyy-XMvZYF4?autoplay=1"
+          title="What is NGO | How NGOs Work: Funding, Operations, and Impact Explained @Unboxfunding"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        >
+        </iframe>
+      </div>
+
       <div>
         <h1>Transforming Lives Together</h1>
         <p>Join us in making a positive impact worldwide</p>
@@ -465,53 +512,101 @@
     </section>
 
     <section id="about" class="section">
-      
       <h1>Meet Our Team</h1>
-  <div class="team-container">
-    <!-- Member 1 -->
-    <div class="team-member">
-      <img src="laxmipriya.jpeg" alt="Team Member">
-      <h2>Laxmipriya Das</h2>
-      <h4>Team Leader</h4>
-      <p>Masters in Business Administration<br>"Let's lead with passion and purpose!"</p>
-    </div>
+      <div class="about-us-content">
+    <p>Behind Hope NGO is a passionate team of individuals dedicated to making a positive impact.</p>
+    <p>Our staff includes experienced professionals, volunteers, and community advocates who work tirelessly to address the 
+    needs of the populations we serve. We are also fortunate to collaborate with local organizations, partners, and governments to amplify our reach and resources.</p>
 
-    <!-- Member 2 -->
-    <div class="team-member">
-      <img src="muna.jpeg" alt="Team Member">
-      <h2>Muna Mohapatra</h2>
-      <h4>Lead Developer</h4>
-      <p>BSc in Computer Science<br>"Clean code, happy life."</p>
+    <h2>Our Core Values</h2>
+    <div class="core-values">
+        <div class="value">
+            <h3>Compassion</h3>
+            <p>We approach our work with empathy, understanding, and a commitment to the dignity of every person.</p>
+        </div>
+        <div class="value">
+            <h3>Integrity</h3>
+            <p>We believe in transparency, accountability, and ethical practices in all our operations.</p>
+        </div>
+        <div class="value">
+            <h3>Sustainability</h3>
+            <p>We are dedicated to creating lasting change by developing programs that empower communities to thrive on their own.</p>
+        </div>
+        <div class="value">
+            <h3>Collaboration</h3>
+            <p>We recognize that real change happens when we work together—whether with other NGOs, governments, or local stakeholders.</p>
+        </div>
     </div>
+</div>
 
-    <!-- Member 3 -->
-    <div class="team-member">
-      <img src="baby.jpeg=12" alt="Team Member">
-      <h2>Baby Hasanda</h2>
-      <h4>UI/UX Designer</h4>
-      <p>BA in Graphic Design<br>"Design is intelligence made visible."</p>
-    </div>
+      <br /><br />
+      <div class="team-container">
+        <!-- Member 1 -->
+        <div class="team-member">
+          <img
+            src="laxmipriya.jpeg"
+            alt="Team Member"
+          />
+          <h2>Laxmipriya Das</h2>
+          <h4>Team Leader</h4>
+          <p>
+            Masters in Business Administration<br />"Let's lead with passion and
+            purpose!"
+          </p>
+        </div>
 
-    <!-- Member 4 -->
-    <div class="team-member">
-      <img src="pujarini.jpeg" alt="Team Member">
-      <h2>Pujarini Behera</h2>
-      <h4>QA Engineer</h4>
-      <p>B.Tech in Information Tech<br>"Every bug is an opportunity to improve."</p>
-    </div>
+        <!-- Member 2 -->
+        <div class="team-member">
+          <img
+            src="muna.jpeg"
+            alt="Team Member"
+          />
+          <h2>Muna Mohapatra</h2>
+          <h4>Lead Developer</h4>
+          <p>BSc in Computer Science<br />"Clean code, happy life."</p>
+        </div>
 
-    <!-- Member 5 -->
-    <div class="team-member">
-      <img src="sambit.jpeg" alt="Team Member">
-      <h2>Sambit Kumar Sethi</h2>
-      <h4>Marketing Lead</h4>
-      <p>Masters in Digital Marketing<br>"Strategy + creativity = success."</p>
-    </div>
-  </div><br>
-  <h2>About Us</h2>
+        <!-- Member 3 -->
+        <div class="team-member">
+          <img src="baby.jpeg=12" alt="Team Member" />
+          <h2>Baby Hasanda</h2>
+          <h4>UI/UX Designer</h4>
+          <p>
+            BA in Graphic Design<br />"Design is intelligence made visible."
+          </p>
+        </div>
+
+        <!-- Member 4 -->
+        <div class="team-member">
+          <img src="pujarini.jpeg" alt="Team Member" />
+          <h2>Pujarini Behera</h2>
+          <h4>QA Engineer</h4>
+          <p>
+            B.Tech in Information Tech<br />"Every bug is an opportunity to
+            improve."
+          </p>
+        </div>
+
+        <!-- Member 5 -->
+        <div class="team-member">
+          <img
+            src="sambit.jpeg"
+            alt="Team Member"
+          />
+          <h2>Sambit Kumar Sethi</h2>
+          <h4>Marketing Lead</h4>
+          <p>
+            Masters in Digital Marketing<br />"Strategy + creativity = success."
+          </p>
+        </div>
+      </div>
+      <br />
+      <h2>About Us</h2>
       <p style="margin: 20px 0">
-        We are a dedicated NGO committed to sustainable development and
-        humanitarian aid.
+        We believein a world where every individual has the opportunity to
+        thrive,ragardless of their background or circumstances. Our work spans
+        across all over India.,focusing on sustainable solutions,community
+        empowerment,and collaborative partnerships.
       </p>
       <div
         style="
@@ -633,7 +728,11 @@
       >
         Your support helps us continue our mission. Every little bit counts!
       </p>
-      <a href="https://github.com/bishnu83380/ngo.github.io/blob/main/qr.jpeg?raw=true" class="btn">Donate Now</a>
+      <a
+        href="https://github.com/bishnu83380/ngo.github.io/blob/main/qr.jpeg?raw=true"
+        class="btn"
+        >Donate Now</a
+      >
     </section>
 
     <!-- Advanced Footer -->
@@ -662,8 +761,8 @@
             <li>
               Email: <a href="mailto:info@hopengo.org">info@hopengo.org</a>
             </li>
-            <li>Phone: <a href="tel:+1234567890">+1 234 567 890</a></li>
-            <li>Address: 123 Hope Street, NY</li>
+            <li>Phone: <a href="tel:+916372656305">6372656305</a></li>
+            <li>Address: Ocac Tower,3rd FLOOR,North Side,Acharya Vihar,Bhubaneswar,Odisha</li>
           </ul>
         </div>
         <div class="footer-section">
